@@ -1,0 +1,8 @@
+FROM 'mariadb:10'
+
+# ARG UID
+# ARG GID
+# RUN groupadd -g $GID %group_name% 
+# RUN useradd -u $UID -g $GID -s /bin/bash %user_name%
+
+# USER %user_name%

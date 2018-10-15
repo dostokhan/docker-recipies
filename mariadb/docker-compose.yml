@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  mariadb:
+    container_name: mariadb
+    build: 
+      context: .
+      dockerfile: Dockerfile.mariadb
+    environment:
+      - MARIADB_DATABASE=appdb
+      - MARIADB_USER=dbUser
+      - MARIADB_PASSWORD=dbPass
+      - MARIADB_ROOT_PASSWORD=r00t1sg0d
+    volumes:
+      - 'mariadb_data:/var/lib/mysql'
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: 'phpmyadmin/phpmyadmin'
+    environment:
+      - MYSEL_ROOT_PASSWORD=r00t1sg0d
+    ports:
+      - '8080:80'
+
+volumes:
+  mariadb_data:
+
+networks:
+  default:
+    external:
+      name: fullstack
